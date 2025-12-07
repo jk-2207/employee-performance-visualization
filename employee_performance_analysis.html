@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Performance Analysis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      line-height: 1.4;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Employee Performance Analysis</h1>
+
+  <p><strong>Student email (for verification):</strong> 24f3000312@ds.study.iitm.ac.in</p>
+
+  <h2>Python Code</h2>
+  <pre><code>
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Employee Performance Analysis
+# Email for verification: 24f3000312@ds.study.iitm.ac.in
+
+# 1. Load the employee data
+df = pd.read_csv("employee_performance.csv")
+
+# 2. Calculate the frequency count for the "Sales" department
+sales_count = (df["department"] == "Sales").sum()
+
+# 3. Print the frequency count to the console
+print("Number of employees in the Sales department:", sales_count)
+
+# 4. Create a histogram-like bar chart showing
+#    the distribution of departments
+plt.figure(figsize=(8, 5))
+sns.countplot(x="department", data=df)
+plt.title("Employee Count by Department")
+plt.xlabel("Department")
+plt.ylabel("Number of Employees")
+plt.xticks(rotation=30, ha="right")
+plt.tight_layout()
+
+# 5. Save the visualization as a PNG (used later in HTML)
+plt.savefig("department_distribution.png", dpi=150)
+  </code></pre>
+
+  <h2>Department Distribution Visualization</h2>
+  <p>The chart below shows the number of employees in each department.</p>
+  <img src="department_distribution.png" alt="Department Distribution Histogram">
+
+</body>
+</html>
